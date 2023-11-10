@@ -4,14 +4,19 @@ from services.generator import Generator
 from services.uploader import Uploader
 
 class Product(SlugMixin, DateMixin):
+
+
     name = models.CharField(max_length=255,verbose_name='Name')
+
     price = models.CharField(max_length=255,verbose_name='Price')
+    
     image = models.ImageField(Uploader.upload_images_for_products,null=True,blank=True)
 
     def __str__(self):
         return self.name
     
     class Meta:
+
         ordering = ('created_at',)
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
